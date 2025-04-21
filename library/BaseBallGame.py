@@ -26,6 +26,9 @@ def click_btnCheck():
     ball = 0
     output_str = str(strike)+"S"+" "+str(ball)+"B"
     btnCheck["text"] = (output_str)
+
+    if 
+
     #------------------- 과제 영역 끝 -----------------------#
 
     # Game End (9번의 기회를 모두 사용한 경우)
