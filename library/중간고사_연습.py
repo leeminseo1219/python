@@ -18,6 +18,7 @@
 # *******************
 
 
+# ***변별력 문제제
 for i in range(1,5,2):
     for j in range(2,4,1):
         print("gd")
