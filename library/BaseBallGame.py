@@ -27,7 +27,23 @@ def click_btnCheck():
     output_str = str(strike)+"S"+" "+str(ball)+"B"
     btnCheck["text"] = (output_str)
 
-    if 
+    user_input = entryLec1.get() + entryLec2.get() + entryLec3.get()
+
+    for i in range(3):
+        if user_input[i] == answer[i]:
+            strike += 1
+        elif user_input[i] in answer:
+            ball += 1
+
+    if strike == 0 and ball == 0:
+        output_str = "OUT"
+    else:
+        output_str = str(strike)+"S "+str(ball)+"B"
+    
+    btnCheck["text"] = output_str
+
+    if strike == 3:
+        successGame = True
 
     #------------------- 과제 영역 끝 -----------------------#
 
