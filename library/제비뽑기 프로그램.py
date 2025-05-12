@@ -22,7 +22,7 @@ labelMouse = tkinter.Label(root,text=",",font=("맑은 고딕",10))
 labelMouse.pack()
 
 #bgimg = tkinter.PhotoImage(file = "miko.png")
-bgimg = ImageTk.PhotoImage(Image.open("c:\Users\user\Desktop\miko.png"))
+bgimg = ImageTk.PhotoImage(Image.open("c:\Users\my\Downloads\miko.png"))
 canvas.create_image(400,300,image=bgimg)
 
 label = tkinter.Label(root,text="??",font=("맑은 고딕",120))
