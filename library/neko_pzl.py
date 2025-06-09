@@ -7,6 +7,7 @@ score = 0
 hisc = 1000
 difficulty = 0
 tsugi = 0
+timerCounter =0
 
 cursor_x = 0
 cursor_y = 0
@@ -14,11 +15,16 @@ mouse_x = 0
 mouse_y = 0
 mouse_c = 0
 
+
+#블럭정보 저장
+\
 neko = []
 check = []
 for i in range(10):
     neko.append([0, 0, 0, 0, 0, 0, 0, 0])
     check.append([0, 0, 0, 0, 0, 0, 0, 0])
+
+blockCounut = [0,1,2,3,4,5]
 
 def mouse_move(e):
     global mouse_x, mouse_y
@@ -39,26 +45,28 @@ def draw_neko(): #
 def check_neko():
     for y in range(10): #0,10,1
         for x in range(8): #모든 칸에 대해서 실핼핼
-            check[y][x] = neko[y][x] #neko->check (복사사)
+            check[y][x] = neko[y][x] #neko->check (복사)
 
     for y in range(1, 9):
         for x in range(8): #맨 위와 맨 아래줄을 제외한 모든칸에 대해서 실행
             if check[y][x] > 0: #세로 블럭
                 if check[y - 1][x] == check[y][x] and check[y + 1][x] == check[y][x]:
-                    neko[y - 1][x] = 7
+                    blockCounut[neko[y][x]-1] +=3
+                    neko[y - 1][x] = 7 #파괴 전
                     neko[y][x] = 7
                     neko[y + 1][x] = 7
 
-    for y in range(10):
+    for y in range(0,10):
         for x in range(1, 7): #맨 왼쪽과 맨 오른쪽줄을 제외한 모든칸에 대해서 실행
             if check[y][x] > 0: #
-                if check[y][x - 1] == check[y][x] and check[y][x + 1] == check[y][x]:
-                    neko[y][x - 1] = 7
-                    neko[y][x] = 7
+                if check[y + 1][x] == check[y][x] and check[y][x + 1] == check[y][x]:
+                    neko[y + 1][x] = 7
                     neko[y][x + 1] = 7
+                    neko[y][x] = 7
+                    neko[y + 1][x + 1] = 7
 
-    for y in range(1, 9):
-        for x in range(1, 7):
+    for y in range(0, 9):
+        for x in range(0, 7):
             if check[y][x] > 0: #대각선 블럭
                 if check[y - 1][x - 1] == check[y][x] and check[y + 1][x + 1] == check[y][x]:
                     neko[y - 1][x - 1] = 7
